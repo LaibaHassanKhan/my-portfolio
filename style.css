@@ -442,3 +442,25 @@ img {
     right: 10%;
   }
 }
+
+/* Mobile fix for home__img */
+@media screen and (max-width: 768px) {
+  .home__img {
+    position: relative;   /* remove absolute positioning on small screens */
+    width: 250px;         /* smaller image */
+    margin: 0 auto;       /* center the image */
+    top: 0;               /* reset offset */
+    right: 0;             /* reset offset */
+  }
+
+  .home__img img {
+    width: 100%;
+    height: auto;
+  }
+
+  .home__data {
+    margin-top: 1rem;     /* give text space above image */
+    text-align: center;   /* center text for mobile */
+  }
+}
+
