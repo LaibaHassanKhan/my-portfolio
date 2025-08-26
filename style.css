@@ -463,17 +463,30 @@ img {
     text-align: center;   /* center text for mobile */
   }
 }
-/* Mobile fix for social icons */
+
 @media screen and (max-width: 768px) {
   .home__social {
-    flex-direction: row;     /* make them horizontal */
-    justify-content: center; /* center on screen */
-    gap: 12px;               /* space between icons */
+    flex-direction: row;       /* horizontal on mobile */
+    justify-content: center;   /* center horizontally */
+    gap: 12px;                 /* space between icons */
   }
 
   .home__social-icon {
-    margin: 0;               /* remove vertical margin */
-    font-size: 1.5rem;       /* keep icons readable */
+    margin: 0; 
+    font-size: 1.5rem;         /* adjust icon size if needed */
   }
 }
 
+.home__social {
+  display: flex;
+  flex-direction: column; /* default: vertical */
+}
+
+/* Force horizontal only on small screens */
+@media screen and (max-width: 768px) {
+  .home__social {
+    flex-direction: row !important;   /* override */
+    justify-content: center !important;
+    gap: 12px !important;
+  }
+}
