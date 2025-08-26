@@ -463,4 +463,17 @@ img {
     text-align: center;   /* center text for mobile */
   }
 }
+/* Mobile fix for social icons */
+@media screen and (max-width: 768px) {
+  .home__social {
+    flex-direction: row;     /* make them horizontal */
+    justify-content: center; /* center on screen */
+    gap: 12px;               /* space between icons */
+  }
+
+  .home__social-icon {
+    margin: 0;               /* remove vertical margin */
+    font-size: 1.5rem;       /* keep icons readable */
+  }
+}
 
