@@ -67,9 +67,10 @@ ul {
 a {
   text-decoration: none;
 }
+/* replace your current global img rule with this */
 img {
-  max-width: 90%;
-  height: 80%;
+  max-width: 100%;
+  height: auto;
   display: block;
 }
 
@@ -479,8 +480,9 @@ img {
 
 .home__social {
   display: flex;
-  flex-direction: column; /* default: vertical */
+  flex-direction: row; /* horizontal layout */
 }
+
 
 /* Force horizontal only on small screens */
 @media screen and (max-width: 768px) {
@@ -490,3 +492,44 @@ img {
     gap: 12px !important;
   }
 }
+.project {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  max-width: 1000px;  /* set maximum width */
+  height: 400px;     /* fixed height */
+  overflow: hidden;
+  margin: 0 auto;    /* center slider */
+}
+
+.slides {
+  display: flex;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+.slides img {
+  width: 100%;         /* each image fills slider width */
+  height: 100%;        /* fills slider height */
+  object-fit: cover;   /* crop/scale nicely */
+  flex: 0 0 100%;      /* each image takes exactly 100% of the slider */
+}
+
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,0,0,0.5);
+  color: #fff;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem;
+  cursor: pointer;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
