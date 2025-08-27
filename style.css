@@ -1,3 +1,7 @@
+/* =========================
+   Full project CSS (updated)
+   ========================= */
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 :root {
@@ -67,7 +71,7 @@ ul {
 a {
   text-decoration: none;
 }
-/* replace your current global img rule with this */
+/* Global image rule */
 img {
   max-width: 100%;
   height: auto;
@@ -222,8 +226,6 @@ img {
   height: auto;   /* keeps proportions */
 }
 
-
-
 .button {
   display: inline-block;
   background-color: var(--first-color);
@@ -355,8 +357,6 @@ img {
   margin: 0 var(--mb-2);
 }
 
-
-
 @media screen and (min-width: 768px) {
   body {
     margin: 0;
@@ -483,7 +483,6 @@ img {
   flex-direction: row; /* horizontal layout */
 }
 
-
 /* Force horizontal only on small screens */
 @media screen and (max-width: 768px) {
   .home__social {
@@ -492,33 +491,43 @@ img {
     gap: 12px !important;
   }
 }
+
+/* ===================== PROJECT SLIDER ===================== */
 .project {
   margin: 2rem 0;
   text-align: center;
 }
 
+/* Responsive slider container */
 .slider {
   position: relative;
   width: 100%;
-  max-width: 1000px;  /* set maximum width */
-  height: 400px;     /* fixed height */
+  max-width: 1000px;
+  height: auto;         /* responsive height */
+  aspect-ratio: 16/9;   /* keeps proportions */
   overflow: hidden;
-  margin: 0 auto;    /* center slider */
+  margin: 0 auto;
+  border-radius: 8px;
 }
 
+/* Slides row */
 .slides {
   display: flex;
-  height: 100%;
   transition: transform 0.5s ease-in-out;
+  will-change: transform;
 }
+
+/* Each image fills the slider area */
 .slides img {
-  width: 100%;         /* each image fills slider width */
-  height: 100%;        /* fills slider height */
-  object-fit: cover;   /* crop/scale nicely */
-  flex: 0 0 100%;      /* each image takes exactly 100% of the slider */
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  flex: 0 0 100%;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-
+/* Prev/Next buttons */
 .prev, .next {
   position: absolute;
   top: 50%;
@@ -526,10 +535,69 @@ img {
   background: rgba(0,0,0,0.5);
   color: #fff;
   border: none;
-  font-size: 2rem;
-  padding: 0.5rem;
+  font-size: 1.8rem;
+  padding: 0.4rem 0.6rem;
   cursor: pointer;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.prev:hover, .next:hover {
+  background: rgba(0,0,0,0.7);
 }
 
 .prev { left: 10px; }
 .next { right: 10px; }
+
+/* Optional dots (if you add them in HTML) */
+.dots {
+  text-align: center;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+.dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin: 0 5px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dots span.active {
+  background: #fff;
+}
+
+/* Mobile adjustments */
+@media screen and (max-width: 768px) {
+  .slider {
+    max-width: 100%;
+    aspect-ratio: 4/3;
+  }
+  .prev, .next {
+    font-size: 1.5rem;
+    padding: 0.3rem 0.5rem;
+  }
+  .dots span {
+    width: 10px;
+    height: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .slider {
+    aspect-ratio: 1/1;
+  }
+  .prev, .next {
+    font-size: 1.2rem;
+    padding: 0.2rem 0.4rem;
+  }
+  .dots span {
+    width: 8px;
+    height: 8px;
+  }
+}
